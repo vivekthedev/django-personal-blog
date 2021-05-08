@@ -1,7 +1,7 @@
 # Personal Full Featured Advance Django Blog
 ## HTML/CSS/JS Template provided by Pixelwars : impose for bloggers
 ---
-### Features
+## Features
 
   Recent Posts
   
@@ -13,7 +13,7 @@
 
 ---
 
-### Feature to Add
+## Feature to Add
   
   Contact Page
   
