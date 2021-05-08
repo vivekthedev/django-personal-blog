@@ -22,8 +22,24 @@
 ---
 
 ## Screenshots
+
+#HOME PAGE
 ![picture alt](https://github.com/bradtoxic/django-personal-blog/blob/main/Screenshots/Impose-for-bloggers.png)
+---
+
+#BLOG LIST PAGE
 ![picture alt](https://github.com/bradtoxic/django-personal-blog/blob/main/Screenshots/Impose-for-bloggers%20(1).png)
+---
+
+#ABOUT ME PAGE
 ![picture alt](https://github.com/bradtoxic/django-personal-blog/blob/main/Screenshots/Impose-for-bloggers%20(2).png)
+---
+
+#CONTACT PAGE
 ![picture alt](https://github.com/bradtoxic/django-personal-blog/blob/main/Screenshots/Impose-for-bloggers%20(3).png)
+---
+
+#BLOG DETAIL PAGE
 ![picture alt](https://github.com/bradtoxic/django-personal-blog/blob/main/Screenshots/Impose-for-bloggers%20(4).png)
+---
+
