@@ -4,12 +4,17 @@
 ### Features
 
   Recent Posts
+  
   Comment to Post
+  
   Share Post to Social Media
+  
   Pagination
 
 ### Feature to Add
+  
   Contact Page
+  
   Send Email
 ---
 
