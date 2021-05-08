@@ -22,4 +22,8 @@
 ---
 
 ## Screenshots
-![picture alt](https://drive.google.com/file/d/1kh8xaXjTKoMxios4ez61aLINL1pz7vWQ/view?usp=sharing)
+![picture alt](https://github.com/bradtoxic/django-personal-blog/blob/main/Screenshots/Impose-for-bloggers.png)
+![picture alt](https://github.com/bradtoxic/django-personal-blog/blob/main/Screenshots/Impose-for-bloggers%20(1).png)
+![picture alt](https://github.com/bradtoxic/django-personal-blog/blob/main/Screenshots/Impose-for-bloggers%20(2).png)
+![picture alt](https://github.com/bradtoxic/django-personal-blog/blob/main/Screenshots/Impose-for-bloggers%20(3).png)
+![picture alt](https://github.com/bradtoxic/django-personal-blog/blob/main/Screenshots/Impose-for-bloggers%20(4).png)
