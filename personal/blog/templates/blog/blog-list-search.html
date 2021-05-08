@@ -1,0 +1,82 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block content %}
+
+<div id="main" class="site-main">
+
+    <!-- post-slider -->
+    <div class="layout-medium">
+        <header class="entry-header">
+            <h1 class="entry-title">Results Related to "{{q}}" </h1>
+        </header>
+        <div id="primary" class="content-area">
+            <!-- site-content -->
+            <div id="content" class="site-content" role="main">
+
+                <!-- BLOG LIST -->
+                <div class="blog-list  blog-stream">
+                    <!-- .hentry -->
+                    {% for post in qs %}
+                    <article class="hentry post has-post-thumbnail">
+
+                        <!-- .featured-image -->
+                        <div class="featured-image">
+                            <a href="{{post.get_absolute_url}}"><img src="{{post.heroImage.url}}" alt="blog-image"></a>
+                        </div>
+                        <!-- .featured-image -->
+
+
+
+                        <!-- .hentry-middle -->
+                        <div class="hentry-middle">
+
+                            <!-- .entry-header -->
+                            <header class="entry-header">
+
+                                <!-- .entry-meta -->
+                                <div class="entry-meta">
+                                    {% for tag in post.tags.all %}
+                                    <span class="cat-links">
+                                        <a href="{% url 'blog:search-tag' tag.slug %}"
+                                            title="View all posts in Adventure" rel="category tag">{{tag}}</a>
+                                    </span>
+                                    {% endfor %}
+                                    <span class="entry-date">
+                                        <time class="entry-date"
+                                            datetime="2014-07-13T04:34:10+00:00">{{post.publish|date:"F j, Y"}}</time>
+                                    </span>
+
+                                </div>
+                                <!-- .entry-meta -->
+
+                                <!-- .entry-title -->
+                                <h2 class="entry-title"><a href="{{post.get_absolute_url}}">{{post.title}}</a></h2>
+
+                            </header>
+                            <!-- .entry-header -->
+
+                            <!-- .entry-content -->
+                            <div class="entry-content">
+
+                                <p>{{post.content|truncatewords:25}}
+                                    <span class="more">
+                                        <a href="{{post.get_absolute_url}}" class="more-link">Read More</a>
+                                    </span>
+                                </p>
+
+                            </div>
+
+                        </div>
+                    </article>
+                    {% endfor %}
+
+                </div>
+                <!-- post pagination -->
+                {% include "pagination.html" with page=qs %}
+                <!-- post pagination -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- site-main -->
+{% endblock content %}

@@ -1,0 +1,61 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block content %}
+    <!-- page -->
+    <div id="page" class="hfeed site">
+        <!-- site-main -->
+        <div id="main" class="site-main"> <!-- .featured-top -->
+            <div class="featured-top">
+                    
+                <img src="{% static 'images/site/aboutme.jpg' %}">
+            
+                <!-- .post-thumbnail -->
+                <div class="post-thumbnail" style="background-image:url({% static 'images/site/aboutme.jpg' %})">
+                
+                    <!-- .entry-header -->
+                    <header class="entry-header">
+                        
+                        <!-- .entry-title -->
+                        <h1 class="entry-title">About Me</h1>
+                        
+                    </header>
+                    <!-- .entry-header -->
+                </div>
+            <!-- .post-thumbnail -->
+            </div>
+            <!-- .featured-top -->
+            <div class="layout-fixed"> 
+                <div id="primary" class="content-area">
+            <!-- site-content -->
+                    <div id="content" class="site-content" role="main"> <!-- .hentry -->
+                        <article class="hentry page">   
+                            
+                            <!-- .entry-content -->
+                            <div class="entry-content">
+                            	
+                                <h4>Hey there, what's up?</h4>
+                                <p>I really don't what should I write here. Let's see, this page says about me. So I am supposed to write stuff that's related to me.</p>
+                                    <p>I don't really like to talk about myself but I am great Listener.</p>
+                                    <p>I have three words that I think they define me - Introvert, Geek, Honest</p>
+                                
+                                <h4>You can find me here:</h4>
+                                <p>
+                                    <a class="social-link facebook" href="https://www.facebook.com/profile.php?id=100005981409330"></a>
+                                    <a class="social-link twitter" href="https://twitter.com/iamvivek24"></a>
+                                    <a class="social-link linkedin" href="https://www.linkedin.com/in/vivek-singh-5117711ab/"></a>
+                                    <a class="social-link pinterest" href="https://in.pinterest.com/vivekhappy786"></a>
+                                    <a class="social-link github" href="https://github.com/bradtoxic"></a>
+                                    <a class="social-link instagram" href="https://www.instagram.com/bradtoxic/"></a>
+                                    <a class="social-link stack-overflow" href="https://stackoverflow.com/users/13612986/vivek-singh"></a>
+                                </p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+            <!-- layout -->
+        
+        
+        </div>
+        <!-- site-main -->
+        {% endblock content %}

@@ -1,0 +1,150 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block content %}
+
+<div id="page" class="hfeed site">
+    <!-- site-main -->
+    <div id="main" class="site-main">
+        <div class="layout-medium">
+            <div id="primary" class="content-area with-sidebar">
+                <!-- site-content -->
+                <div id="content" class="site-content" role="main">
+                    <!-- entry-header -->
+                    <!--<header class="entry-header">
+                        	<h1 class="entry-title">Latest Stories</h1>
+                        </header>-->
+                    <!-- entry-header -->
+                    <!-- BLOG LIST -->
+                    <div class="blog-creative first-full blog-stream">
+                        <!-- .hentry -->
+                        <article class="hentry post has-post-thumbnail">
+
+                            <!-- post -->
+                            <div class="post-thumbnail" style="background-image:url({{r.heroImage.url}})">
+
+                                <!-- .entry-header -->
+                                <header class="entry-header">
+
+                                    <!-- .entry-meta -->
+                                    <div class="entry-meta">
+                                        {% for tag in r.tags.all %}
+                                        <span class="cat-links">
+                                            <a href="{% url 'blog:search-tag' tag.slug %}"
+                                                title="View all posts in Life" rel="category tag">{{tag}}</a>
+                                        </span>
+                                        {% endfor %}
+                                    </div>
+                                    <!-- .entry-meta -->
+
+                                    <!-- .entry-title -->
+                                    <h2 class="entry-title"><a href="{{ r.get_absolute_url }}">{{r.title}}</a></h2>
+
+                                    <!-- .entry-meta -->
+                                    <div class="entry-meta">
+                                        <span class="entry-date">
+                                            <time class="entry-date">{{r.publish| date:"F j, Y"}}</time>
+                                        </span>
+                                    </div>
+                                    <!-- .entry-meta -->
+
+                                    <p><a href="{{ r.get_absolute_url }}" class="more-link">View Post</a></p>
+
+                                </header>
+                                <!-- .entry-header -->
+
+                            </div>
+                            <!-- post -->
+
+                        </article>
+                        <!-- .hentry -->
+                        <!-- .hentry -->
+                        {% for post in posts %}
+                        <article class="hentry post has-post-thumbnail">
+                            <div class="post-thumbnail post-img" style="background-image:url({{post.heroImage.url}})">
+                                <a href="{{ post.get_absolute_url }}">{{post.title}}</a>
+                                <!-- .entry-header -->
+                                <header class="entry-header">
+                                    <!-- .entry-meta -->
+                                    <div class="entry-meta">
+                                        <span class="entry-date">
+                                            <time class="entry-date"
+                                                datetime="2014-07-13T04:34:10+00:00">{{post.publish| date:"F j, Y"}}</time>
+                                        </span>
+                                    </div>
+                                    <!-- .entry-meta -->
+
+                                </header>
+                                <!-- .entry-header -->
+
+                            </div>
+
+                            <div class="post-thumbnail post-desc">
+
+                                <!-- .entry-header -->
+                                <header class="entry-header">
+
+                                    <!-- .entry-meta -->
+                                    <div class="entry-meta">
+                                        {% for tag in post.tags.all %}
+                                        <span class="cat-links">
+                                            <a href="{% url 'blog:search-tag' tag.slug %}"
+                                                title="View all posts in Life" rel="category tag">{{tag.name}}</a>
+                                        </span>
+                                        {% endfor %}
+                                    </div>
+                                    <!-- .entry-meta -->
+
+                                    <!-- .entry-title -->
+                                    <h2 class="entry-title"><a href="{{ post.get_absolute_url }}"
+                                            title="{{post.title}}">{{post.title | truncatewords:4}}</a></h2>
+
+                                    <p><a href="{{ post.get_absolute_url }}" class="more-link">View Post</a></p>
+
+                                </header>
+                                <!-- .entry-header -->
+
+                            </div>
+
+                        </article>
+                        {% endfor %}
+                        <!-- .hentry -->
+
+
+                    </div>
+
+                    {% include "pagination.html" with page=posts %}
+                    <!-- post pagination -->
+                </div>
+                <!-- site-content -->
+
+            </div>
+            <!-- primary -->
+            <!-- #secondary -->
+            <div id="secondary" class="widget-area sidebar" role="complementary">
+
+                <!-- widget : text -->
+                <aside class="widget widget_text">
+                    <h3 class="widget-title">About Me</h3>
+                    <div class="textwidget">
+                        <p><img src="{% static 'images/site/picture.jpg' %}" alt="avatar"></p>
+                        <p>Hello. I am Vivek, and this picture is not mine. I took it from unsplash.com .</p>
+                    </div>
+                </aside>
+                <!-- widget : text -->
+
+                <!-- widget : text -->
+                <aside class="widget widget_text">
+                    <h3 class="widget-title">Follow Me</h3>
+                    <div class="textwidget">
+                        <p>
+                            <a class="social-link facebook" href="https://www.facebook.com/profile.php?id=100005981409330"></a>
+                            <a class="social-link twitter" href="https://twitter.com/iamvivek24"></a>
+                            <a class="social-link instagram" href="https://www.instagram.com/bradtoxic/"></a>
+                        </p>
+                    </div>
+                </aside>
+               
+            </div>
+        </div>
+    </div>
+    {% endblock content %}

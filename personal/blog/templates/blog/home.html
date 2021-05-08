@@ -1,0 +1,102 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block content %}
+        <!-- site-main -->
+        <div id="main" class="site-main">
+            <div class="layout-medium">
+                <div id="primary" class="content-area">
+                    <!-- site-content -->
+                    <div id="content" class="site-content" role="main">
+                        <!-- .hentry -->
+                        <article class="hentry page">
+
+
+                            <!-- .entry-content -->
+                            <div class="entry-content intro" data-animation="rotate-1">
+
+
+
+                                <!-- .profile-image -->
+                                <div class="profile-image">
+                                    <img alt="profile" src="{% static 'images/site/picture.jpg' %}" />
+                                </div>
+                                <!-- .profile-image -->
+
+
+                                <h2><em>Hi.</em> I am Vivek</h2>
+                                <h3>I am a <strong>blogger</strong> <strong>coder</strong> <strong>writer</strong>
+                                </h3>
+
+
+                                <!-- .link-boxes -->
+                                <figure>
+                                    <a href="{% url 'blog:about-me' %}"><img src="{% static 'images/site/aboutme.jpg' %}" alt="About Me"></a>
+                                    <figcaption class="wp-caption-text">About Me</figcaption>
+                                </figure>
+
+                                <figure>
+                                    <a href="{% url 'blog:contact-me' %}"><img src="{% static 'images/site/contact.jpg' %}" alt="Contact Me"></a>
+                                    <figcaption class="wp-caption-text">Contact</figcaption>
+                                </figure>
+
+                                <figure>
+                                    <a href="{% url 'blog:blog_list' %}"><img src="{% static 'images/site/blog.jpg' %}" alt="Check out the blog"></a>
+                                    <figcaption class="wp-caption-text">Check out my Blog</figcaption>
+                                </figure>
+
+                                <figure>
+                                    <a href="https://www.instagram.com/bradtoxic/"><img
+                                            src="{% static 'images/site/insta.jpg' %}" alt="Instagram, Me"></a>
+                                    <figcaption class="wp-caption-text">Follow On Instagram</figcaption>
+                                </figure>
+                                <!-- .link-boxes -->
+                            </div>
+                            <!-- .entry-content -->
+                        </article>
+                        <!-- .page -->
+                        <!-- .home-title -->
+                        <h3 class="widget-title home-title">LATEST FROM THE BLOG</h3>
+                        <!-- BLOG SIMPLE -->
+                        <div class="blog-simple">
+                            <!-- .hentry -->
+                            {% for post in latest %}
+                            <article class="hentry post has-post-thumbnail">
+
+                                <!-- .hentry-left -->
+                                <div class="hentry-left">
+                                    <div class="entry-date">
+                                        <span class="day">{{ post.publish.day }}</span>
+                                        <span class="month">{{ post.publish|date:"F"}}</span>
+                                        <span class="year">{{ post.publish.year }}</span>
+                                    </div>
+                                    <div class="featured-image" style="background-image:url({{post.heroImage.url}}); background-size: cover; background-position: center center;"></div>
+                                </div>
+                                <!-- .hentry-left -->
+
+                                <!-- .hentry-middle -->
+                                <div class="hentry-middle">
+
+                                    <!-- .entry-title -->
+                                    <h2 class="entry-title"><a href="{{ post.get_absolute_url }}">{{post.title}}</a>
+                                    </h2>
+                                </div>
+                                <!-- .hentry-middle -->
+                                <a class="post-link" href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+                            </article>
+                            {% endfor %}
+                        </div>
+                        <!-- BLOG SIMPLE -->
+                        <!-- .home-launch -->
+                        <div class="home-launch">
+                            <a class="button" href="{% url 'blog:blog_list' %}">See All Posts</a>
+                        </div>
+                        <!-- .home-launch -->
+                    </div>
+                    <!-- site-content -->
+                </div>
+                <!-- primary -->
+            </div>
+            <!-- layout -->
+        </div>
+        <!-- site-main -->
+{% endblock content%}

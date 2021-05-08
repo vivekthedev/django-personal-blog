@@ -1,0 +1,224 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block content %}
+
+<div id="main" class="site-main">
+  <!-- .featured-top -->
+  <div class="featured-top">
+
+    <img src="{{post.heroImage.url}}" alt="post-image">
+
+    <!-- .post-thumbnail -->
+    <div class="post-thumbnail" style="background-image:url({{post.heroImage.url}})">
+
+      <!-- .entry-header -->
+      <header class="entry-header">
+
+
+        <!-- .entry-meta -->
+        <div class="entry-meta">
+          {% for tag in post.tags.all %}
+          <span class="cat-links">
+            <a href="{% url 'blog:search-tag' tag.slug %}" title="View all posts in Travel"
+              rel="category tag">{{tag}}</a>
+          </span>
+          {% endfor %}
+        </div>
+        <!-- .entry-meta -->
+
+        <!-- .entry-title -->
+        <h1 class="entry-title">{{post.title}}</h1>
+
+        <!-- .entry-meta -->
+        <div class="entry-meta">
+          <span class="entry-date">
+            <time class="entry-date" datetime="2014-07-13T04:34:10+00:00">{{post.publish| date:"F j, Y"}}</time>
+          </span>
+        </div>
+        <!-- .entry-meta -->
+
+      </header>
+      <!-- .entry-header -->
+
+    </div>
+    <!-- .post-thumbnail -->
+
+  </div>
+  <!-- .featured-top -->
+
+
+  <div class="layout-medium">
+    <div id="primary" class="content-area">
+      <!-- site-content -->
+      <div id="content" class="site-content" role="main">
+        <!-- .hentry -->
+        <article class="hentry post single-post">
+
+
+          <!-- .entry-content -->
+          <div class="entry-content">
+
+            {{post.content|safe}}
+            <!-- .gallery -->
+
+          </div>
+          <!-- .entry-content -->
+
+          <!-- .share-links -->
+          <div class="share-links">
+
+            <h3>SHARE THIS POST</h3>
+
+            <a rel="nofollow" target="_blank"
+              href="https://twitter.com/intent/tweet?text=Currently Reading : {{post.title}} https:/{{post.get_absolute_url}}"
+              title="Share this post with your followers"><i class="pw-icon-twitter"></i></a>
+
+            <a rel="nofollow" target="_blank"
+              href="http://www.facebook.com/sharer.php?u={{post.get_absolute_url}}&amp;t={{post.title}}"
+              title="Share this post on Facebook"><i class="pw-icon-facebook"></i></a>
+
+          </div>
+          <!-- .share-links -->
+
+
+          <!-- .nav-single -->
+          <nav class="nav-single row">
+
+            <div class="nav-previous col-xs-6">
+              <h4>PREVIOUS POST</h4>
+              <a href="{{post.prevPost.get_absolute_url}}" rel="prev">{{post.prevPost.title}}</a>
+            </div>
+
+            <div class="nav-next col-xs-6">
+              <h4>NEXT POST</h4>
+              <a href="{{post.nextPost.get_absolute_url}}" rel="next">{{post.nextPost.title}}</a>
+            </div>
+
+          </nav>
+          <!-- .nav-single -->
+
+
+          <!-- .about-author -->
+          <aside class="about-author">
+
+            <h3>About The Author</h3>
+
+            <!-- .author-bio -->
+            <div class="author-bio">
+
+              <!-- .author-img -->
+              <div class="author-img">
+                <a href="#"><img alt="Vivek" src="{% static 'images/site/picture.jpg' %}" class="avatar"></a>
+              </div>
+              <!-- .author-img -->
+
+              <!-- .author-info -->
+              <div class="author-info">
+                <h4 class="author-name">Vivek Kumar Singh</h4>
+                <p>There is nothing much to know about me. I am a human. </p>
+
+                <p>
+                  <a class="social-link facebook" href="https://www.facebook.com/profile.php?id=100005981409330"></a>
+                  <a class="social-link twitter" href="https://twitter.com/iamvivek24"></a>
+                  <a class="social-link instagram" href="https://www.instagram.com/bradtoxic/"></a>
+                </p>
+
+              </div>
+              <!-- .author-info -->
+
+            </div>
+            <!-- .author-bio -->
+
+          </aside>
+        </article>
+        <aside class="related-posts">
+
+          <h3>You May Also Like</h3>
+
+          <!-- post -->
+          {% for post in similar_posts %}
+          <div class="post-thumbnail" style="background-image:url({{post.heroImage.url}})">
+
+            <!-- .entry-header -->
+            <header class="entry-header">
+
+              <!-- .entry-title -->
+              <h2 class="entry-title"><a href="{{post.get_absolute_url}}">{{post.title}}</a></h2>
+
+              <p><a href="{{post.get_absolute_url}}" class="more-link">View Post</a></p>
+
+            </header>
+            <!-- .entry-header -->
+
+          </div>
+          {% endfor %}
+        </aside>
+
+        <!-- #comments -->
+        <!-- #comments -->
+        <div id="comments" class="comments-area">
+          {% with comments.count as total_comments %}
+          <h3>{{total_comments}} comment{{total_comments|pluralize}}</h3>
+          {% endwith %}
+          <!-- .commentlist -->
+          <ol class="commentlist">
+            <li class="comment even thread-even depth-1">
+
+              <!-- #comment-## -->
+              {% for comment in comments %}
+              <article class="comment">
+
+                <!-- .comment-meta -->
+                <header class="comment-meta comment-author vcard">
+                  <cite class="fn"><a href="#" rel="external nofollow" class="url">{{comment.name}}</a></cite>
+                  <span class="comment-date">{{comment.created}}</span>
+                </header>
+                <!-- .comment-meta -->
+
+                <!-- .comment-content -->
+                <section class="comment-content comment">
+                  <p>{{comment.body}}</p>
+                </section>
+                {% empty %}
+                <section class="comment-content comment">
+                  <p>There are no comments in this post.</p>
+                </section>
+              </article>
+              {% endfor %}
+
+            </li>
+
+          </ol>
+          <div id="respond">
+
+            <h3 id="reply-title">LEAVE A COMMENT </h3>
+
+            <form method="post" id="commentform">
+              {% csrf_token %}
+              <p class="comment-form-comment">
+                <label for="comment">Comment</label>
+                {{comment_form.as_p}}
+              </p>
+
+              <p class="form-submit">
+                <input type="submit" name="submit" id="submit" class="button primary" value="Post Comment">
+              </p>
+
+            </form>
+
+
+          </div>
+          <!-- #respond -->
+
+        </div>
+
+      </div>
+      <!-- site-content -->
+
+    </div>
+    <!-- primary -->
+</div>
+  <!-- layout -->
+=</div>
+<!-- site-main -->
+{% endblock content %}
