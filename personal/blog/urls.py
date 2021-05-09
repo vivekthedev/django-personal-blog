@@ -1,8 +1,9 @@
 from django.urls import path
-from .views import home, post, blog_list, about, contact, search, search_tag
+from .views import home, post, blog_list, about, contact, search, search_tag, er404
+from django.conf.urls import handler404
 app_name = 'blog'
 
-
+handler404 = 'blog.views.er404'
 urlpatterns = [
     path('', home, name='home'),
     path('blog/', blog_list, name='blog_list'),

@@ -7,8 +7,14 @@ from django.db.models import Q
 from taggit.models import Tag
 from django.core.mail import send_mail
 from personal.settings import EMAIL_HOST_USER
+from django.shortcuts import render_to_response
+from django.template import RequestContext
 # Create your views here.
 
+def er404(request):
+    response = render_to_response('blog/404.html',{},context_instance=RequestContext(request))
+    response.status_code = 400
+    return response
 
 def home(request):
     latest = Post.objects.all()[:5]
