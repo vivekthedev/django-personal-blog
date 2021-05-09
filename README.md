@@ -10,6 +10,8 @@
   Share Post to Social Media
   
   Pagination
+  
+  Page 404
 
 ---
 
@@ -18,8 +20,6 @@
   Contact Page
   
   Send Email
-  
-  404 Page
 
 ---
 
