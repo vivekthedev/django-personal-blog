@@ -5,10 +5,13 @@ import random
 from .forms import CommentForm, SendMail
 from django.db.models import Q
 from taggit.models import Tag
-from django.core.mail import send_mail
-from personal.settings import EMAIL_HOST_USER
+# from django.core.mail import send_mail
+# from personal.settings import EMAIL_HOST_USER
 # Create your views here.
 
+def err404(request,exception):
+    
+    return render(request, 'blog/404.html')
 
 def home(request):
     latest = Post.objects.all()[:5]
@@ -62,22 +65,24 @@ def about(request):
 
 
 def contact(request):
-    success = ''
-    if request.method == 'POST':
-        form = SendMail(data=request.POST)
-        if form.is_valid():
-            subject = 'Mail from' + \
-                str(form['name']) + 'regarding yoursite.com'
-            message = form['message']
-            to_email = form['email']
-            send_mail(subject, message, EMAIL_HOST_USER,
-                      to_email, fail_silently=False)
-            form = SendMail()
-            success = 'Email Sent successfully'
-    else:
-        form = SendMail()
+    form = SendMail()
+    # success = ''
+    # if request.method == 'POST':
+    #     form = SendMail(data=request.POST)
+    #     if form.is_valid():
+    #         subject = 'Mail from' + \
+    #             str(form['name']) + 'regarding yoursite.com'
+    #         message = form['message']
+    #         to_email = form['email']
+    #         send_mail(subject, message, EMAIL_HOST_USER,
+    #                   to_email, fail_silently=False)
+    #         form = SendMail()
+    #         success = 'Email Sent successfully'
+    # else:
+    #     form = SendMail()
 
-    context = {'form': form, 'success': success}
+    # context = {'form': form, 'success': success}
+    context = {'form': form}
     return render(request, 'blog/contact.html', context)
 
 
