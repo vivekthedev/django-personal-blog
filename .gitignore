@@ -1,4 +1,4 @@
-./env
+env/
 personal/personal/__pycache__/
 personal/blog/__pycache__/
 personal/blog/migrations/__pycache__/
